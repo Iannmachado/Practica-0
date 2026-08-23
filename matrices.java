@@ -111,5 +111,44 @@ public class matrices {
         }
         return existeEnTodasLasFilas;
     }
+    //Implementar un algoritmo que dados una matriz de N x N elementos y un arreglo de N elementos,
+    //ambos con elementos enteros >=0, verifique usando acumuladores booleanos que para toda fila i
+    //de la matriz se cumpla que sus elementos son múltiplos del elemento i del arreglo, y que alguna
+    //columna sea igual al arreglo elemento a elemento.
+    public static boolean filaMultiplosDeArregloColumnaIgualArreglo (int [][] mat, int[] arreglo){
+        if (arreglo.length == 0){
+            return false;
+        }
+        if (mat.length == 0){
+            return true;
+        }
+        if (mat.length != arreglo.length){
+            return false;
+        }
+
+        return elementoDelArregloMultiploDeFila(mat, arreglo) && columnaIgualArregloElementoAElemento(mat, arreglo);
+    }
+    public static boolean elementoDelArregloMultiploDeFila (int [][] mat, int[] arreglo){
+        boolean TodasSonMultiplo = true;
+        for (int f = 0; f < mat.length; f++){
+            boolean esMultiplo = true;
+            for (int c = 0; c < mat[0].length; c++){
+                    esMultiplo = esMultiplo && (mat[f][c]%arreglo[f]==0);
+            }
+            TodasSonMultiplo = TodasSonMultiplo && esMultiplo;
+        }
+        return TodasSonMultiplo;
+    }
+    public static boolean columnaIgualArregloElementoAElemento (int [][] mat, int[] arreglo){
+        boolean coincideElArreglo = false;
+        for (int c = 0; c < mat[0].length; c++){
+            boolean coincideElElemento = true;
+            for (int f = 0; f < mat.length; f++){
+                coincideElElemento = coincideElElemento && (mat[f][c]==arreglo[f]);
+            }
+            coincideElArreglo = coincideElArreglo || coincideElElemento;
+        }
+        return coincideElArreglo;
+    }
 
 }
