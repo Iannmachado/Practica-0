@@ -91,4 +91,25 @@ public class matrices {
         }
         return existenAmbasEnTodas; 
     }
+    //Implementar una función usando acumuladores booleanos, que dada una matriz de N x N
+    //elementos enteros y un arreglo de N elementos enteros determine si el elemento i del arreglo se
+    //encuentra en la fila i de la matriz:
+    public static boolean arregloEnFilas(int[][] mat, int[] arreglo){
+        if (arreglo.length==0){
+            return true;
+        }
+        if (mat.length==0){
+            return false;
+        }
+        boolean existeEnTodasLasFilas = true; 
+        for(int f = 0; f < mat.length; f++){
+            boolean existeEnFila = false; 
+            for (int c = 0; c < mat[0].length; c++){
+                existeEnFila = existeEnFila || (mat[f][c]==arreglo[f]);
+            }
+            existeEnTodasLasFilas = existeEnTodasLasFilas && existeEnFila;
+        }
+        return existeEnTodasLasFilas;
+    }
+
 }

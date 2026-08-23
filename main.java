@@ -23,6 +23,29 @@ public class main {
             + " (esperado: false)");
         System.out.println("Matriz 3: " + matrices.filasCrecientesParImpar(matriz3)
             + " (esperado: false)");
+
+        int[][] matriz4 = {
+            {9, 2, 4, 5},
+            {6, 7, 1, 7},
+            {3, 5, 9, 11},
+            {12, 8, 5, 1}
+        };
+        int[] arreglo1 = {4, 7, 5, 1};
+
+        int[][] matriz5 = {
+            {4, 2, 13, 5},
+            {6, 7, 1, 3},
+            {3, 7, 9, 11},
+            {12, 8, 5, 10}
+        };
+        int[] arreglo2 = {4, 7, 5, 1};
+
+        System.out.println("Arreglo en filas, caso 1: "
+            + matrices.arregloEnFilas(matriz4, arreglo1)
+            + " (esperado: true)");
+        System.out.println("Arreglo en filas, caso 2: "
+            + matrices.arregloEnFilas(matriz5, arreglo2)
+            + " (esperado: false)");
     }
 
     // Implementar con acumuladores booleanos una función booleana “mayor10” que recibe una
