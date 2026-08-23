@@ -4,11 +4,25 @@ public class main {
         int[] lista = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] lista1 = {11, 20, 30, 40, 50, 60, 70, 80, 90, 111};
         int[] lista2 = {10, 20, 30, 40, 50, 60, 70, 80, 90, 110};
+        int[] lista3 = {1,2,4,1};
+        int[] lista4 = {3,2,1};
         System.out.println("la lista es mayor a 10: "+mayor10(lista));
         System.out.println("la lista 1 es mayor a 10: "+mayor10(lista1));
         System.out.println("la lista es: "+multiplo5AlgunoMayor100(lista));
         System.out.println("la lista 1 es: "+multiplo5AlgunoMayor100(lista1));
         System.out.println("la lista 2 es: "+multiplo5AlgunoMayor100(lista2));
+        System.out.println("la lista 1 es subconjutno de la lista 2: "+pertenecenTodos(lista3, lista4));
+
+        int[][] matriz1 = {{1, 2, 3}, {4, 5, 6}};
+        int[][] matriz2 = {{1, 2, 3}, {4, 5, 5}};
+        int[][] matriz3 = {{1, 2, 3}, {2, 4, 6}};
+
+        System.out.println("Matriz 1: " + matrices.filasCrecientesParImpar(matriz1)
+            + " (esperado: true)");
+        System.out.println("Matriz 2: " + matrices.filasCrecientesParImpar(matriz2)
+            + " (esperado: false)");
+        System.out.println("Matriz 3: " + matrices.filasCrecientesParImpar(matriz3)
+            + " (esperado: false)");
     }
 
     // Implementar con acumuladores booleanos una función booleana “mayor10” que recibe una
@@ -34,5 +48,25 @@ public class main {
         return multiplo5&&AlgunoMayorA100;
     }
     //Implementar una función que determine si un arreglo es subconjunto de otro
+    public static boolean pertenecenTodos(int[] elems, int[] arreglo){
+        if (elems.length==0){
+            return true;
+        }
+        if (arreglo.length==0){
+            return false;
+        }
+        boolean esSubconjunto = true;
+        
+        for(int i = 0; i < elems.length ; i++){
+            boolean elementosIguales = false;
+            for(int j = 0; j < arreglo.length; j++){
+                 elementosIguales = elementosIguales || (elems[i]==arreglo[j]);
+            }
+            esSubconjunto = esSubconjunto && elementosIguales;
+        }
+        return esSubconjunto;
+    }
+    
+
     
 }
