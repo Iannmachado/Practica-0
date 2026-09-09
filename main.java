@@ -59,7 +59,19 @@ public class main {
             {6, 44, 8, 12},
             {10, 5, 15, 30}
         };
+        int[][] matriz8 = {
+            {6, 1, 8},
+            {2, 21, 13},
+            {7, 5, 18}
+        };
+        int[][] matriz9 = {
+            {4, 1, 7},
+            {1, 20, 3},
+            {3, 5, 6}
+        };
         int[] arreglo4 = {2, 3, 5};
+        int[] arreglo5 = {2, 7, 6};
+        int[] arreglo6 = {3, 7, 6};
 
         System.out.println("Múltiplos y columna igual, caso 1: "
             + matrices.filaMultiplosDeArregloColumnaIgualArreglo(matriz6, arreglo3)
@@ -67,6 +79,13 @@ public class main {
         System.out.println("Múltiplos y columna igual, caso 2: "
             + matrices.filaMultiplosDeArregloColumnaIgualArreglo(matriz7, arreglo4)
             + " (esperado: false)");
+        System.out.println("parcial ej 1: "
+            + matrices.perteneceAlgunaColumnaYDiagonalEsMultiplo(matriz8, arreglo5)
+            + " (esperado: true)");
+        System.out.println("parcial ej 1: "
+            + matrices.perteneceAlgunaColumnaYDiagonalEsMultiplo(matriz9, arreglo6)
+            + " (esperado: false)");
+        
     }
 
     // Implementar con acumuladores booleanos una función booleana “mayor10” que recibe una
