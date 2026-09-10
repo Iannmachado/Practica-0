@@ -187,9 +187,6 @@ public class matrices {
         return todosSonMultiplos;
     }
     public static boolean esRaraYDiagonalEsIgualAVector(int[][] mat,int[] vec){
-        boolean todasLasColumnasElementoMultiplo5 = true;
-        boolean AlgunaFilaTodosElementosPares = false;
-        boolean AscendenteIgualAVector = false;
         if(vec.length==0){
             return false;
         }
