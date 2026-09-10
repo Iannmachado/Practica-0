@@ -186,5 +186,50 @@ public class matrices {
         }
         return todosSonMultiplos;
     }
+    public static boolean esRaraYDiagonalEsIgualAVector(int[][] mat,int[] vec){
+        boolean todasLasColumnasElementoMultiplo5 = true;
+        boolean AlgunaFilaTodosElementosPares = false;
+        boolean AscendenteIgualAVector = false;
+        if(vec.length==0){
+            return false;
+        }
+        if(mat.length!=mat[0].length){
+            return false;
+        }
+        if(mat.length!=vec.length){
+            return false;
+        }
+        return elementosColumnaMultiplo(mat) && filaConElementosPares (mat) && diagonalIgualAVector(mat, vec);
+    }
+    public static  boolean elementosColumnaMultiplo(int[][]mat){
+        boolean todasLasColumnasElementoMultiplo5 = true;
+        for(int c=0; c < mat[0].length; c++){
+            boolean hayElementoEnColumna = false;
+            for(int f=0; f < mat.length; f++){
+                hayElementoEnColumna = hayElementoEnColumna || (mat[f][c]%5==0);
+            }
+            todasLasColumnasElementoMultiplo5 = todasLasColumnasElementoMultiplo5 && hayElementoEnColumna;
+        }
+        return todasLasColumnasElementoMultiplo5;
+    }
+    public static boolean filaConElementosPares(int[][]mat){
+        boolean AlgunaFilaTodosElementosPares = false;
+        for (int f = 0; f < mat.length; f++){
+            boolean hayElementoPar = true;
+            for(int c = 0; c < mat[0].length; c++){
+                hayElementoPar = hayElementoPar && (mat[f][c]%2==0);
+            }
+            AlgunaFilaTodosElementosPares = AlgunaFilaTodosElementosPares || hayElementoPar;
+        } 
+        return AlgunaFilaTodosElementosPares;
+        
+    }
+    public static boolean diagonalIgualAVector(int[][]mat,int[] vec){
+        boolean todosLosVectoresIguales = true;
+        for(int f = 0; f < mat.length; f++){
+            todosLosVectoresIguales = todosLosVectoresIguales && (mat[f][mat.length-1-f]==vec[f]);
+        }
+        return todosLosVectoresIguales;
+    }
 
 }
