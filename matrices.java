@@ -157,37 +157,34 @@ public class matrices {
         if(arr.length==0){
             return false;
         }
-        if(arr.length<mat.length){
+        if(arr.length<mat.length || mat.length != mat[0].length){
             return false;
         }
-        return elemmentosColumnaPertenecenArreglo(mat, arr)&&elementosDiagonalMultiplo(mat, arr);
+        return (elemmentosColumnaPertenecenArreglo(mat, arr)&&elementosDiagonalMultiplo(mat, arr));
     }
     public static boolean elemmentosColumnaPertenecenArreglo(int [][] mat,int [] arr){
         boolean CoincideEnAlgunaColumna = false;
         for(int c=0; c<mat[0].length;c++){
             boolean CoincidenTodos=true;
             for(int f=0; f<mat.length; f++){
-                CoincidenTodos = CoincidenTodos && (arr[f]==mat[f][c]);
+                boolean pertenece = false;
+                for (int i = 0; i < arr.length; i++) {
+                    pertenece = pertenece || (arr[i] == mat[f][c]);
+                }
+                CoincidenTodos = CoincidenTodos && pertenece;
             }
             CoincideEnAlgunaColumna = CoincideEnAlgunaColumna || CoincidenTodos;
         }
         return CoincideEnAlgunaColumna;
     }
     public static boolean elementosDiagonalMultiplo(int [][] mat,int [] arr){
-            //diagonal Ascendente
-            boolean AlgunElementosDiagonalEnArreglo = false;
-            boolean todosElementoEnDiagonalAsc = true;
-            for(int c=0; c<mat[0].length;c++){
-                todosElementoEnDiagonalAsc = todosElementoEnDiagonalAsc && (mat[c][c] == arr[c]) ;
-            }   
-            AlgunElementosDiagonalEnArreglo = AlgunElementosDiagonalEnArreglo || todosElementoEnDiagonalAsc;
-            //diagonal Descendente
-            boolean todosElementoEnDiagonalDesc = true;
-            for(int c=0; c<mat[0].length;c++){
-                todosElementoEnDiagonalDesc = todosElementoEnDiagonalDesc&& (mat[c][mat[0].length - 1 - c] == arr[c]);
-            }
-            AlgunElementosDiagonalEnArreglo = AlgunElementosDiagonalEnArreglo || todosElementoEnDiagonalDesc;
-            return AlgunElementosDiagonalEnArreglo;
+        boolean todosSonMultiplos = true;
+        for (int i = 0; i < mat.length; i++) {
+            todosSonMultiplos = todosSonMultiplos
+                && arr[i] != 0
+                && mat[i][i] % arr[i] == 0;
+        }
+        return todosSonMultiplos;
     }
 
 }
