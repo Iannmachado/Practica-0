@@ -228,5 +228,36 @@ public class matrices {
         }
         return todosLosVectoresIguales;
     }
+    public static boolean filasCrecienteColConRepetidos ( int [ ][ ] mat){
+        boolean todasLasFilasCrecienteEsctricto = true;
+        boolean AlgunaColumnaElementoReptido = false;
+        
+        return todasLasFilasCrecienteEsctricto(mat) && AlgunaColumnaElementoReptido(mat) ;
+    }
+    public static boolean todasLasFilasCrecienteEsctricto (int [][] mat){
+        boolean todasLasFilasCumplen = true;
+        for (int f = 0; f < mat.length; f++){
+            boolean esEstricta = true;
+            for (int c = 0;  c < mat[0].length; c++){
+                esEstricta = esEstricta && (mat[f][c]>=mat[f][c + 1]);
+            }
+            todasLasFilasCumplen = todasLasFilasCumplen && esEstricta;
+        }
+        return todasLasFilasCumplen;
+
+    }
+    public static boolean AlgunaColumnaElementoReptido (int [][] mat){
+        boolean algunaColumnaRepetido = false;
+        for (int c = 0; c < mat[0].length; c++){
+            boolean esRepetido = false;
+            for (int f = 0; f < mat.length - 1; f++){
+                for (int otraFila = f + 1; otraFila < mat.length; otraFila++){
+                    esRepetido = esRepetido || (mat[f][c] == mat[otraFila][c]);
+                }
+            }
+            algunaColumnaRepetido = algunaColumnaRepetido || esRepetido;
+        }
+        return algunaColumnaRepetido;
+    }
 
 }
